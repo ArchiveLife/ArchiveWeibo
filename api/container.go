@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+	"errors"
 
 	"github.com/imroc/req"
 	"github.com/patrickmn/go-cache"
@@ -31,13 +32,15 @@ func (api *WeiboAPI) GetContainerId(uid string) (string, error) {
 		return "", err
 	}
 
-	// 0 -> 主页
-	// 1 -> weibo
-	// 2 -> 相册
-	value := body.Data.TabsInfo.Tabs[1].Containerid
-	api.cache.Set(key, value, cache.DefaultExpiration)
+	for _, tab := range body.Data.TabsInfo.Tabs {
+		if tab.TabKey == "weibo" {
+			value := tab.Containerid
+			api.cache.Set(key, value, cache.DefaultExpiration)
+			return value, nil
+		}
+	}
 
-	return value, nil
+	return "", errors.New("not found correct container for 'weibo'")
 
 }
 
