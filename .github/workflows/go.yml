@@ -27,11 +27,14 @@ jobs:
         run: go get ./...
 
       - name: unit test
-        run: go test ./...
+        run: go test -v ./...
 
       - name: build
         working-directory: main
         run: bash build.sh
+
+      - name: set snapshot version
+        run: echo "VERSION=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
 
       - name: upload artifact
         uses: actions/upload-artifact@v1.0.0
@@ -40,3 +43,5 @@ jobs:
           name: SNAPSHOTS-Build
           # Directory containing files to upload
           path: main/build
+        env:
+          GITHUB_SHA: "${}"
