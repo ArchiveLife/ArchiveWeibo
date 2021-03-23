@@ -27,7 +27,12 @@ jobs:
         run: go get ./...
 
       - name: unit test
-        run: go test -v ./...
+        run: go test ./... -v -race -coverprofile=coverage.txt -covermode=atomic
+
+      - name: codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: set snapshot version
         run: echo "VERSION=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
@@ -43,5 +48,3 @@ jobs:
           name: SNAPSHOTS-Build
           # Directory containing files to upload
           path: main/build
-        env:
-          GITHUB_SHA: "${}"

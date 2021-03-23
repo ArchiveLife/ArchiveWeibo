@@ -36,3 +36,4 @@ ast/**/output.json
 # test
 
 .env
+coverage.txt
