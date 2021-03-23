@@ -2,7 +2,7 @@
 
 # cli file name
 # change this please
-OUTPUT_FILENAME="cli"
+OUTPUT_FILENAME="archive_weibo"
 
 # platforms
 PLATFORMS="darwin/amd64"
@@ -23,43 +23,43 @@ OUTPUT=build/${SOURCE_FILE:-$OUTPUT_FILENAME} # if no src file given, use curren
 LDFLAGS="-ldflags \"-X main.Version=${VERSION}\" -mod=vendor"
 
 for PLATFORM in $PLATFORMS; do
-  GOOS=${PLATFORM%/*}
-  GOARCH=${PLATFORM#*/}
-  BIN_FILENAME="${OUTPUT}-${VERSION}-${GOOS}-${GOARCH}"
-  if [[ "${GOOS}" == "windows" ]]; then BIN_FILENAME="${BIN_FILENAME}.exe"; fi
-  CMD="GOOS=${GOOS} GOARCH=${GOARCH} go build ${LDFLAGS} -o ${BIN_FILENAME} $@"
-  echo "${CMD}"
-  eval $CMD || FAILURES="${FAILURES} ${PLATFORM}"
-  zip -j "${BIN_FILENAME}.zip" ${BIN_FILENAME}
-  rm ${BIN_FILENAME}
+    GOOS=${PLATFORM%/*}
+    GOARCH=${PLATFORM#*/}
+    BIN_FILENAME="${OUTPUT}-${VERSION}-${GOOS}-${GOARCH}"
+    if [[ "${GOOS}" == "windows" ]]; then BIN_FILENAME="${BIN_FILENAME}.exe"; fi
+    CMD="GOOS=${GOOS} GOARCH=${GOARCH} go build ${LDFLAGS} -o ${BIN_FILENAME} $@"
+    echo "${CMD}"
+    eval $CMD || FAILURES="${FAILURES} ${PLATFORM}"
+    zip -j "${BIN_FILENAME}.zip" ${BIN_FILENAME}
+    rm ${BIN_FILENAME}
 done
 
 # ARM builds
-if [[ $PLATFORMS_ARM == *"linux"* ]]; then 
-  BIN_FILENAME="${OUTPUT}-${VERSION}-linux-arm64"
-  CMD="GOOS=linux GOARCH=arm64 go build ${LDFLAGS} -o ${BIN_FILENAME} $@"
-  echo "${CMD}"
-  eval $CMD || FAILURES="${FAILURES} ${PLATFORM}"
-  zip -j "${BIN_FILENAME}.zip" ${BIN_FILENAME}
-  rm ${BIN_FILENAME}
+if [[ $PLATFORMS_ARM == *"linux"* ]]; then
+    BIN_FILENAME="${OUTPUT}-${VERSION}-linux-arm64"
+    CMD="GOOS=linux GOARCH=arm64 go build ${LDFLAGS} -o ${BIN_FILENAME} $@"
+    echo "${CMD}"
+    eval $CMD || FAILURES="${FAILURES} ${PLATFORM}"
+    zip -j "${BIN_FILENAME}.zip" ${BIN_FILENAME}
+    rm ${BIN_FILENAME}
 fi
 
 for GOOS in $PLATFORMS_ARM; do
-  GOARCH="arm"
-  # build for each ARM version
-  for GOARM in 7 6; do
-    BIN_FILENAME="${OUTPUT}-${VERSION}-${GOOS}-${GOARCH}${GOARM}"
-    CMD="GOARM=${GOARM} GOOS=${GOOS} GOARCH=${GOARCH} go build ${LDFLAGS} -o ${BIN_FILENAME} $@"
-    echo "${CMD}"
-    eval "${CMD}" || FAILURES="${FAILURES} ${GOOS}/${GOARCH}${GOARM}"
-    zip -j "${BIN_FILENAME}.zip" ${BIN_FILENAME}
-    rm ${BIN_FILENAME}
-  done
+    GOARCH="arm"
+    # build for each ARM version
+    for GOARM in 7 6; do
+        BIN_FILENAME="${OUTPUT}-${VERSION}-${GOOS}-${GOARCH}${GOARM}"
+        CMD="GOARM=${GOARM} GOOS=${GOOS} GOARCH=${GOARCH} go build ${LDFLAGS} -o ${BIN_FILENAME} $@"
+        echo "${CMD}"
+        eval "${CMD}" || FAILURES="${FAILURES} ${GOOS}/${GOARCH}${GOARM}"
+        zip -j "${BIN_FILENAME}.zip" ${BIN_FILENAME}
+        rm ${BIN_FILENAME}
+    done
 done
 
 # eval errors
 if [[ "${FAILURES}" != "" ]]; then
-  echo ""
-  echo "${SCRIPT_NAME} failed on: ${FAILURES}"
-  exit 1
+    echo ""
+    echo "${SCRIPT_NAME} failed on: ${FAILURES}"
+    exit 1
 fi
