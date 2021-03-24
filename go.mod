@@ -1,9 +1,9 @@
-module github.com/ArchiveLife/ArchiveWeibo
+module github.com/ArchiveLife/weibo
 
 go 1.14
 
 require (
-	github.com/ArchiveLife/model v0.0.4
+	github.com/ArchiveLife/core v0.0.5
 	github.com/JohannesKaufmann/html-to-markdown v1.2.0
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/imroc/req v0.3.0

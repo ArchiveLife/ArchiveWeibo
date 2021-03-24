@@ -1,7 +1,7 @@
 package adapter
 
 import (
-	"github.com/ArchiveLife/model/model"
+	"github.com/ArchiveLife/core/model"
 )
 
 type ArticleReader interface {

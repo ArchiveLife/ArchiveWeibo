@@ -1,7 +1,7 @@
-# github.com/ArchiveLife/model v0.0.4
+# github.com/ArchiveLife/core v0.0.5
 ## explicit
-github.com/ArchiveLife/model/adapter
-github.com/ArchiveLife/model/model
+github.com/ArchiveLife/core/adapter
+github.com/ArchiveLife/core/model
 # github.com/JohannesKaufmann/html-to-markdown v1.2.0
 ## explicit
 github.com/JohannesKaufmann/html-to-markdown

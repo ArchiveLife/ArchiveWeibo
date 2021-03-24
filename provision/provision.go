@@ -1,7 +1,7 @@
 package provision
 
 import (
-	"github.com/ArchiveLife/model/adapter"
+	"github.com/ArchiveLife/core/adapter"
 )
 
 type WeiboServiceProvision struct {

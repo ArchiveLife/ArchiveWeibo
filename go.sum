@@ -1,11 +1,5 @@
-github.com/ArchiveLife/model v0.0.0-20210324044548-be48920f0753 h1:DP95AQBpJWA/y97H6N460EpDIoP8QO4ErsGirFOdy3Y=
-github.com/ArchiveLife/model v0.0.0-20210324044548-be48920f0753/go.mod h1:hNewxB3jXCGX+8j9tEn/+a34RhUDAy2NMB4e1O1L2ks=
-github.com/ArchiveLife/model v0.0.2 h1:zdiWILuvtlgmmIPxY/crJ1/VouTWY697q+LWEm0uvCk=
-github.com/ArchiveLife/model v0.0.2/go.mod h1:sBHwTDme1NaqH9D4E/V1HZPeHRXWEWEjdAC1LEIZTQY=
-github.com/ArchiveLife/model v0.0.3 h1:xqLIhs8EAcGRoO/xwSS/4x6MYrL4pvPBWLcvFNMQTzE=
-github.com/ArchiveLife/model v0.0.3/go.mod h1:sBHwTDme1NaqH9D4E/V1HZPeHRXWEWEjdAC1LEIZTQY=
-github.com/ArchiveLife/model v0.0.4 h1:xRgTI6x10BuppFK419SeYv6ehBmbzlAtNvj/rlNU+mM=
-github.com/ArchiveLife/model v0.0.4/go.mod h1:sBHwTDme1NaqH9D4E/V1HZPeHRXWEWEjdAC1LEIZTQY=
+github.com/ArchiveLife/core v0.0.5 h1:nMqi92wxHMV8JeJkpeSLLMRpi8Co8WUGuiev41JjT+E=
+github.com/ArchiveLife/core v0.0.5/go.mod h1:gqprqJDBBPvxUN7OSqFE29EHdXQPKBTDl56nM4hm6AM=
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/JohannesKaufmann/html-to-markdown v1.2.0 h1:UGTGZeFq6ljcd6CSxLW+CzUXQQDMJMzQIQ4lVexFCOk=

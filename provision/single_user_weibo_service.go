@@ -6,9 +6,9 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/ArchiveLife/ArchiveWeibo/api"
-	"github.com/ArchiveLife/model/adapter"
-	"github.com/ArchiveLife/model/model"
+	"github.com/ArchiveLife/core/adapter"
+	"github.com/ArchiveLife/core/model"
+	"github.com/ArchiveLife/weibo/api"
 
 	md "github.com/JohannesKaufmann/html-to-markdown"
 )
